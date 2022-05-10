@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <link rel="stylesheet" href="style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Parking Rapid</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="site-branding">
+              <a href="https://creativewebprojects.online/parkingrapid/"
+                ><img
+                  src="https://creativewebprojects.online/parkingrapid/assets/front/images/parkingrapid.png"
+                  alt="Parking Rapid"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr style=" border:2px solid #ffd532; "><br>
+    <div class="wrapper">
+      <div class="homecontent-wrap">
+        <div class="container">
+          <h2 class="site-title"><b>Welcome Parking Rapid</b></h2>
+          <p style="text-align: center;">
+            Parking Rapid provide trouble free parking solution, Book your
+            parking space from Parking Rapid and safely park your vehicle
+            without trouble when you visit any place. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
+            printer took.
+          </p>
+          <div class="buttons text-center"> <button type="button" class="btn btn-warning"> <a
+            href="booking.html"
+            class="button-assets"
+            >Book Now</a
+          ></button><br><br>
+            <button type="button" class="btn btn-warning">Login</button></div>
+         
+          <!-- <div class="user-option">
+            <ul>
+              <li>
+                <a
+                  href="https://creativewebprojects.online/parkingrapid/booknow"
+                  class="button-assets"
+                  >Book Now</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://creativewebprojects.online/parkingrapid/login"
+                  class="button-assets"
+                  >Login</a
+                >
+              </li>
+            </ul>
+          </div> -->
+        </div>
+      </div>
+    </div><br><br><br><br><br><br><br>
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="social-details">
+              <ul class="icon text-center">
+                <li>
+                  <a href="https://www.facebook.com"
+                    ><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                </li>
+                <li class="mx-3">
+                  <a href="https://www.linkedin.com"
+                    ><i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com"
+                    ><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="copyright">
+              Copyright © 2022 Parking Rapid. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://creativewebprojects.online/parkingrapid/assets/front/js/jquery.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://creativewebprojects.online/parkingrapid/assets/front/js/bootstrap.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://creativewebprojects.online/parkingrapid/assets/front/js/jquery.validate.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://creativewebprojects.online/parkingrapid/assets/front/js/validation.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://creativewebprojects.online/parkingrapid/assets/front/js/custom.js"
+    ></script>
+    <script>
+      //get a parking level throw ajx
+      $("#buildinglist").change(function () {
+        $("#parkinglist").html("");
+        var htmlData = "";
+
+        $.ajax({
+          type: "POST",
+          url: "https://creativewebprojects.online/parkingrapid/parking_level_ajx",
+          data: { buildinglist: $("#buildinglist").val() },
+          dataType: "json",
+          cache: false,
+          success: function (response) {
+            $.each(response, function (index, val) {
+              htmlData +=
+                '<option value="' +
+                val["pl_id"] +
+                '">' +
+                val["pl_level"] +
+                "</option>";
+            });
+            $("#parkinglist").append(htmlData);
+          },
+        });
+      });
+
+      //get a parking Slot throw ajx
+      $("#parkinglist").change(function () {
+        $("#availableparking").html("");
+        var htmlData = "";
+
+        $.ajax({
+          type: "POST",
+          url: "https://creativewebprojects.online/parkingrapid/parking_slot_ajx",
+          data: { parkinglist: $("#parkinglist").val() },
+          dataType: "json",
+          cache: false,
+          success: function (response) {
+            $.each(response, function (index, val) {
+              htmlData +=
+                '<option value="' +
+                val["ps_id"] +
+                '">' +
+                val["ps_number"] +
+                "</option>";
+            });
+            $("#availableparking").append(htmlData);
+          },
+        });
+      });
+
+      jQuery(document).ready(function () {
+        jQuery(".buildinglist").select2();
+        jQuery("#startdatetime").datetimepicker({
+          stepping: 30,
+          format: "hh:mm A",
+          icons: {
+            up: "fa fa-chevron-up",
+            down: "fa fa-chevron-down",
+          },
+        });
+
+        jQuery("#endtimedatetime").datetimepicker({
+          stepping: 30,
+          format: "hh:mm A",
+          icons: {
+            up: "fa fa-chevron-up",
+            down: "fa fa-chevron-down",
+          },
+        });
+
+        jQuery("#startdatetime").on("dp.change", function (e) {
+          if (e.date) {
+            jQuery("#endtimedatetime")
+              .data("DateTimePicker")
+              .date(e.date.add(30, "m"));
+          }
+          jQuery("#endtimedatetime").data("DateTimePicker").minDate(e.date);
+          jQuery("#endtimedatetime")
+            .data("DateTimePicker")
+            .maxDate(e.date.add(2.5, "h"));
+        });
+        /* jQuery('#endtimedatetime').on("dp.change", function (e) {
+                    var start_time = $("#startdatetime").val();
+                    var end_time = $("#endtimedatetime").val();
+                    var booking_starttime = new Date("January 01, 2022 " + start_time);
+                    var booking_endtime = new Date("January 01, 2022 " + end_time);
+                    booking_starttime = booking_starttime.getTime();
+                    booking_endtime = booking_endtime.getTime();
+                    if(booking_starttime > booking_endtime) {
+                        alert('End-time must be bigger then Start-time');
+                        return false;
+                    } });*/
+
+        jQuery(".show-step2").click(function () {
+          if (booking.form()) {
+            jQuery(".stepform").addClass("hiddenstep");
+            jQuery(".step2").removeClass("hiddenstep");
+          }
+        });
+
+        /*jQuery(".show-step3").click(function() {
+                    if (booking.form()) {
+                        jQuery(".stepform").addClass("hiddenstep");
+                        jQuery(".step3").removeClass("hiddenstep");
+                    }
+                });*/
+
+        jQuery(".back-step1").click(function () {
+          jQuery(".stepform").addClass("hiddenstep");
+          jQuery(".step1").removeClass("hiddenstep");
+        });
+
+        jQuery(".back-step2").click(function () {
+          jQuery(".stepform").addClass("hiddenstep");
+          jQuery(".step2").removeClass("hiddenstep");
+        });
+
+        jQuery(".makebooking").click(function () {
+          if (booking.form()) {
+            jQuery(".loader").show();
+            setTimeout(function () {
+              jQuery(".loader").hide();
+            }, 1000);
+          }
+        });
+      });
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

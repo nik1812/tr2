@@ -1,0 +1,36 @@
+body  {
+    background-image: url("");
+    background-color: black;
+    background-repeat:  repeat-x;
+   
+    
+  }
+.header{
+    text-align: center;
+    margin: 10px;
+}
+.site-title{
+    text-align: center;
+    font: 2em;
+}
+buttons{
+    align-items: center;
+}
+user-option{
+    align-items: center;
+}
+.footer{
+    background-color: black;
+    color: white;
+}
+.copyright{
+    text-align: center;
+}
+ul li{
+    display: inline;
+    
+}
+ul li a{
+    color: white;
+    font-size:30px;
+}
